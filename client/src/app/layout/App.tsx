@@ -1,29 +1,31 @@
-import { Container } from "@mui/material";
-import Catalogue from "../../features/catalogue/Catalogue";
-import { useEffect, useState } from "react";
-import { Product } from "../models/product";
-import Header from "./Header";
+import {
+  Container,
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+} from "@mui/material";
+import { Outlet } from "react-router-dom";
+import Nav from "./Nav";
+import { useAppSelector } from "../store/Store";
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    fetch("https://localhost:5154/api/Products/")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const { darkMode } = useAppSelector((state) => state.ui);
+  const modeType = darkMode ? "dark" : "light";
+  const darkTheme = createTheme({
+    palette: {
+      mode: modeType,
+    },
+  });
 
   return (
     <>
-      <Header
-        mode={false}
-        toggleMode={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-      <Container maxWidth="xl">
-        <Catalogue products={products} />
-      </Container>
+      <ThemeProvider theme={darkTheme}>
+        <Nav />
+        <CssBaseline />
+        <Container maxWidth="xl">
+          <Outlet />
+        </Container>
+      </ThemeProvider>
     </>
   );
 }
