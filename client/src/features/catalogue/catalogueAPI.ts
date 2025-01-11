@@ -9,7 +9,7 @@ export const catalogueApi = createApi({
     fetchAllProducts: builder.query<Product[], void>({
       query: () => ({ url: "Products" }),
     }),
-    fetchProduct: builder.query<Product, number>({
+    fetchProduct: builder.query<Product, number>({  
       query: (id) => ({ url: `Products/${id}` }),
     }),
   }),
