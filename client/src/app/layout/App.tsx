@@ -22,7 +22,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <Nav />
         <CssBaseline />
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ mt: 14 }}>
           <Outlet />
         </Container>
       </ThemeProvider>

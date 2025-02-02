@@ -20,7 +20,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors(options => 
 {
-    options.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:5173");
+    options.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:5173");
 });
 
 app.MapControllers();

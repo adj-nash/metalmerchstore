@@ -7,6 +7,7 @@ import { startLoading, stopLoading } from "../layout/uiSlice";
 
 const customBaseQuery = fetchBaseQuery({
   baseUrl: "https://localhost:5154/api",
+  credentials: "include",
 });
 
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
@@ -16,7 +17,7 @@ export const baseQueryWithErrorHandling = async (
   api: BaseQueryApi,
   extraOptions: object
 ) => {
-  api.dispatch(startLoading()); 
+  api.dispatch(startLoading());
 
   await sleep();
   const result = await customBaseQuery(args, api, extraOptions);

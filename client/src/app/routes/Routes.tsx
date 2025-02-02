@@ -5,6 +5,7 @@ import Home from "../../features/home/Home";
 import Contact from "../../features/contact/Contact";
 import About from "../../features/about/About";
 import ProductDetails from "../../features/catalogue/ProductDetails";
+import Basket from "../../features/basket/Basket";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
       { path: "*", element: <Navigate to="not-found" replace /> },
+      { path: "basket", element: <Basket /> },
     ],
   },
 ]);

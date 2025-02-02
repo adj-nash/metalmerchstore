@@ -4,7 +4,6 @@ export type CounterState = {
   data: number;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const initialState: CounterState = {
   data: 0,
 };
