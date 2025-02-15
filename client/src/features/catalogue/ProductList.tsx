@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid2";
 import { Product } from "../../app/models/product";
 import ProductCard from "./ProductCard";
+import Grid2 from "@mui/material/Grid2";
 
 type Props = {
   products: Product[];
@@ -8,7 +9,7 @@ type Props = {
 
 export default function ProductList({ products }: Props) {
   return (
-    <Grid container spacing={2}>
+    <Grid2 container spacing={3}>
       {products
         ? products.map((product) => (
             <Grid size={3} key={product.id}>
@@ -16,6 +17,6 @@ export default function ProductList({ products }: Props) {
             </Grid>
           ))
         : "An error occurred while fetching the products."}
-    </Grid>
+    </Grid2>
   );
 }

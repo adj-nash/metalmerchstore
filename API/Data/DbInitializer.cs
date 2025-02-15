@@ -25,7 +25,7 @@ public class DbInitializer
         {
            new Product
                 {
-                    Name = "Enforced War Remains",
+                    Name = "Enforced \"War Remains\" longsleeve",
                     Description = "Faceripper artwork from the new War Remains record.",
                     Price = 3499,
                     ImageUrl= "https://evilgreed.net/cdn/shop/files/ENFORCED-WarRemains-LS-F_5000x.jpg?v=1709202244",
@@ -37,7 +37,7 @@ public class DbInitializer
                 },  
                 new Product
                 {
-                    Name = "Sodom Partisan",
+                    Name = "Sodom \"Partisan\" longsleeve",
                     Description = "Artwork from the Partisan EP, printed front & back.",
                     Price = 2999,
                     ImageUrl= "https://m.media-amazon.com/images/I/A18Zbr2L5LL._CLa%7C2140%2C2000%7CB1mIFN0BOTL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX569_.png",
@@ -49,7 +49,7 @@ public class DbInitializer
                 },
                 new Product
                 {
-                    Name = "Demolition Hammer Epidemic of Violence",
+                    Name = "Demolition Hammer \"Epidemic of Violence\" longsleeve",
                     Description = "Artwork from the Epidemic of Violence record.",
                     Price = 3499,
                     ImageUrl="https://www.warlordclothing.com/images/product/demohammer_epidemic_longsleeve_front.jpg",
@@ -59,9 +59,9 @@ public class DbInitializer
                     Band= "Demolitioner Hammer",
                     Genre= "Thrash"
                 },
-                                new Product
+                new Product
                 {
-                    Name = "Kreator Pleasure to Kill",
+                    Name = "Kreator \"Pleasure to Kill\" sweatshirt",
                     Description = "Artwork from the Pleasure to Kill record.",
                     Price = 3999,
                     ImageUrl="https://m.media-amazon.com/images/I/A1mN82gBRyL._CLa%7C2140%2C2000%7CB1c7S5pkQjL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png",
@@ -71,6 +71,18 @@ public class DbInitializer
                     Band= "Kreator",
                     Genre= "Thrash"
                 }, 
+                new Product
+                {
+                    Name = "Adolescents \"Kids of the Black Hole\" t-shirt",
+                    Description = "Classic Kids of the Black Hole t-shirt from the self-titled debut.",
+                    Price = 3999,
+                    ImageUrl="https://cdn11.bigcommerce.com/s-p66uh2e57r/images/stencil/1280x1280/products/25876/36408/adolescents_kids_of_the_black_hole_black_t-shirt__35494.1635950277.jpg?c=1",
+                    Category = "T-shirt",
+                    Stock=  1,
+                    Size= 'M',
+                    Band= "Adolescents",
+                    Genre= "Punk"
+                }
         };
 
         context.Products.AddRange(products);
