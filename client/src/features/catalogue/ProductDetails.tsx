@@ -23,7 +23,7 @@ export default function ProductDetails() {
 
   const { data: product, isLoading } = useFetchProductQuery(id ? +id : 0);
 
-  if (isLoading || !product) return <div>Product not found...</div>;
+  if (isLoading || !product) return <div>Loading...</div>;
 
   const handleUpdateBasket = () => {
     const updatedQuantity = item
@@ -39,6 +39,7 @@ export default function ProductDetails() {
     }
   };
 
+  
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = +e.currentTarget.value;
     if (value >= 0) setQuantity(value);

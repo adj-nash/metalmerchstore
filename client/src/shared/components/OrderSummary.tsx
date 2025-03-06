@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import currencyFormat from "../../lib/util";
 import { useFetchBasketQuery } from "../../features/basket/basketApi";
+import { Link } from "react-router-dom";
 
 export default function OrderSummary() {
   const { data } = useFetchBasketQuery();
@@ -51,14 +52,14 @@ export default function OrderSummary() {
           <Box display="flex" justifyContent="space-between" mb={1}>
             <Typography color="textSecondary">Total</Typography>
             <Typography>{currencyFormat(subtotal + deliveryFee)}</Typography>
-          </Box>
+          </Box>  
         </Box>
 
         <Box mt={2}>
-          <Button variant="contained" color="primary" fullWidth sx={{ mb: 1 }}>
+          <Button component={Link} to="/checkout" variant="contained" color="primary" fullWidth sx={{ mb: 1 }}>
             Checkout
           </Button>
-          <Button fullWidth>Continue Shopping</Button>
+          <Button fullWidth variant="contained" component={Link} to="/catalogue">Continue Shopping</Button>
         </Box>
       </Paper>
 

@@ -1,4 +1,4 @@
-export default function Checkout();
+export default function Checkout()
 {
-  return <div></div>;
-}
+  return <div>Hello</div>;
+};

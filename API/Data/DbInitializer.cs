@@ -1,5 +1,7 @@
 using System;
 using API.Entities;
+using MetalMerchStore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data;
@@ -12,12 +14,36 @@ public class DbInitializer
         var context = scope.ServiceProvider.GetRequiredService<StoreContext>()
             ?? throw new InvalidOperationException("Failed to retrieve database.");
 
-            SeedData(context);
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>()
+            ?? throw new InvalidOperationException("Failed to retrieve user manager.");
+
+            SeedData(context, userManager);
     }
 
-    private static void SeedData(StoreContext context)
+    private static async void SeedData(StoreContext context, UserManager<User> userManager) 
     {
         context.Database.Migrate();
+
+        if(!userManager.Users.Any()) 
+        {
+            var user = new User
+            {
+                UserName = "alex_nash@test.co.uk",
+                Email = "alex_nash@test.co.uk"
+            };
+
+            await userManager.CreateAsync(user, "P@$$w0rd");
+            await userManager.AddToRoleAsync(user, "Member");
+
+            var admin = new User
+            {
+                UserName = "alex_nash@live.co.uk",
+                Email = "alex_nash@live.co.uk"
+            };
+
+            await userManager.CreateAsync(admin, "P@$$w0rd");
+            await userManager.AddToRolesAsync(admin, ["Member", "Admin"]);
+        }
 
         if(context.Products.Any()) return;
 
@@ -82,6 +108,18 @@ public class DbInitializer
                     Size= 'M',
                     Band= "Adolescents",
                     Genre= "Punk"
+                },
+                new Product
+                {
+                    Name = "Winterfylleth \"Harold's Reckoning\" t-shirt",
+                    Description = "Re-Print of the \"Harold's Reckoning\" album shirt.",
+                    Price = 2099,
+                    ImageUrl="https://f4.bcbits.com/img/0028035104_10.jpg",
+                    Category = "T-shirt",
+                    Stock=  1,
+                    Size= 'M',
+                    Band= "Winterfylleth",
+                    Genre= "Black"
                 }
         };
 
