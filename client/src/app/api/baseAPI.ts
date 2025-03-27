@@ -7,7 +7,7 @@ import { startLoading, stopLoading } from "../layout/uiSlice";
 import { toast } from "react-toastify";
 
 const customBaseQuery = fetchBaseQuery({
-  baseUrl: "https://localhost:5154/api",
+  baseUrl: import.meta.env.VITE_API_URL,
   credentials: "include",
 });
 
@@ -28,10 +28,13 @@ export const baseQueryWithErrorHandling = async (
   api.dispatch(stopLoading());
 
   if (result.error) {
+    console.log(result.error);
+    
     const originalStatus = result.error.status === "PARSING_ERROR" && result.error.originalStatus
     ? result.error.originalStatus : result.error.status;
 
     const responseData = result.error.data as ErrorResponse;
+    console.log(result);
     
     switch(originalStatus) {
       case 400: 
@@ -50,7 +53,7 @@ export const baseQueryWithErrorHandling = async (
         break;
       case 500:
         if(typeof responseData === "object" && "title" in responseData)
-          toast.error(responseData.title);
+          toast.error(responseData.title + "Hello");
           break;
       default:
         break;

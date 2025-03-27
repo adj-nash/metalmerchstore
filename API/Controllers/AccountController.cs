@@ -50,7 +50,7 @@ public class AccountController(SignInManager<User> signInManager) : BaseControll
         var roles = await signInManager.UserManager.GetRolesAsync(user);
 
         return Ok(new {
-            user.Email,
+            user.Email, 
             user.UserName,
             Roles = roles
         });

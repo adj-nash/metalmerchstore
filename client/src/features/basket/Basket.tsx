@@ -8,7 +8,7 @@ export default function Basket() {
 
   if (isLoading) return <Typography>Currently loading...</Typography>;
 
-  if (!data) return <Typography>Basket is empty...</Typography>;
+  if (!data || data.items.length === 0) return <Typography>Basket is empty...</Typography>;
 
   return (
     <Grid2 container spacing={2}>
