@@ -56,7 +56,7 @@ public class DbInitializer
                     Price = 3499,
                     ImageUrl= "https://evilgreed.net/cdn/shop/files/ENFORCED-WarRemains-LS-F_5000x.jpg?v=1709202244",
                     Category = "Longsleeve",
-                    Stock=  1,
+                    Stock= 100,
                     Size= 'M',
                     Band= "Enforced",
                     Genre= "Thrash"
@@ -68,7 +68,7 @@ public class DbInitializer
                     Price = 2999,
                     ImageUrl= "https://m.media-amazon.com/images/I/A18Zbr2L5LL._CLa%7C2140%2C2000%7CB1mIFN0BOTL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX569_.png",
                     Category = "Longsleeve",
-                    Stock= 1,
+                    Stock= 100,
                     Size= 'M',
                     Band= "Sodom",
                     Genre= "Thrash"
@@ -80,7 +80,7 @@ public class DbInitializer
                     Price = 3499,
                     ImageUrl="https://www.warlordclothing.com/images/product/demohammer_epidemic_longsleeve_front.jpg",
                     Category = "Longsleeve",
-                    Stock=  1,
+                    Stock=  100,
                     Size= 'M',
                     Band= "Demolitioner Hammer",
                     Genre= "Thrash"
@@ -92,7 +92,7 @@ public class DbInitializer
                     Price = 3999,
                     ImageUrl="https://m.media-amazon.com/images/I/A1mN82gBRyL._CLa%7C2140%2C2000%7CB1c7S5pkQjL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png",
                     Category = "Sweatshirt",
-                    Stock=  1,
+                    Stock=  100,
                     Size= 'M',
                     Band= "Kreator",
                     Genre= "Thrash"
@@ -104,7 +104,7 @@ public class DbInitializer
                     Price = 3999,
                     ImageUrl="https://cdn11.bigcommerce.com/s-p66uh2e57r/images/stencil/1280x1280/products/25876/36408/adolescents_kids_of_the_black_hole_black_t-shirt__35494.1635950277.jpg?c=1",
                     Category = "T-shirt",
-                    Stock=  1,
+                    Stock=  100,
                     Size= 'M',
                     Band= "Adolescents",
                     Genre= "Punk"
@@ -116,7 +116,7 @@ public class DbInitializer
                     Price = 2099,
                     ImageUrl="https://f4.bcbits.com/img/0028035104_10.jpg",
                     Category = "T-shirt",
-                    Stock=  1,
+                    Stock=  100,
                     Size= 'M',
                     Band= "Winterfylleth",
                     Genre= "Black"

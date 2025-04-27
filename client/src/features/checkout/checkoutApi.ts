@@ -20,7 +20,6 @@ export const checkoutApi = createApi({
                     dispatch(
                         basketApi.util.updateQueryData("fetchBasket", undefined, (draft) => {
                             draft.clientSecret = data.clientSecret;
-                            draft.clientSecret = data.clientSecret;
                         })
                     )
                 } catch (error) {

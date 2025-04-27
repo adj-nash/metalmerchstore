@@ -38,7 +38,7 @@ export const basketApi = createApi({
   
             const productId = isItem(product) ? product.productId : product.id;
 
-            if(!draft.basketId) isNewBasket = true;
+            if(!draft?.basketId) isNewBasket = true;
         
             if(!isNewBasket) {
             const existingItem = draft.items.find(

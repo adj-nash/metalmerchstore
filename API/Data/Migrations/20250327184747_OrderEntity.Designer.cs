@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20250327184747_OrderEntity")]
+    partial class OrderEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -85,7 +88,6 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PaymentIntentId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long>("Subtotal")
@@ -443,12 +445,10 @@ namespace API.Data.Migrations
                                 .HasColumnType("TEXT");
 
                             b1.Property<int>("ExpMonth")
-                                .HasColumnType("INTEGER")
-                                .HasAnnotation("Relational:JsonPropertyName", "exp_month");
+                                .HasColumnType("INTEGER");
 
                             b1.Property<int>("ExpYear")
-                                .HasColumnType("INTEGER")
-                                .HasAnnotation("Relational:JsonPropertyName", "exp_year");
+                                .HasColumnType("INTEGER");
 
                             b1.Property<int>("Last4")
                                 .HasColumnType("INTEGER");

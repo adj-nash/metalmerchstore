@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
 import { useClearBasketMutation, useFetchBasketQuery } from "../basket/basketApi";
+import { useCreateOrderMutation } from "../orders/orderApi";
 
 
 export default function CheckoutStepper() {
@@ -28,8 +29,8 @@ export default function CheckoutStepper() {
     const {data: basket} = useFetchBasketQuery();
     const navigate = useNavigate();
     const [clearBasket] = useClearBasketMutation();
+    const [createOrder] = useCreateOrderMutation();
    
-
     const steps = ["Address", "Payment", "Review"];
 
     const handleNext = async () => {
@@ -56,6 +57,16 @@ export default function CheckoutStepper() {
       setActiveStep(step => step + 1);
     };
 
+    
+    const createOrderModel = async () => {
+      const shippingAddress = await getNewStripeAddress();
+      const paymentSummary = confirmationToken?.payment_method_preview.card;
+
+      if(!shippingAddress || !paymentSummary) throw new Error("Problem creating order!");
+
+      return {shippingAddress, paymentSummary};
+    };
+
     const getNewStripeAddress = async () => {
       const addressElement = elements?.getElement("address");
       if(!addressElement) return null;
@@ -72,6 +83,9 @@ export default function CheckoutStepper() {
         setSubmit(true);
         if(!confirmationToken || !basket?.clientSecret) throw new Error("There was a problem processing payment.");
 
+        const orderModel = await createOrderModel();
+        const orderResult = await createOrder(orderModel);
+
         const paymentResult = await stripe?.confirmPayment({
           clientSecret: basket.clientSecret,
           redirect: "if_required",
@@ -82,7 +96,8 @@ export default function CheckoutStepper() {
         });
 
         if(paymentResult?.paymentIntent?.status === "succeeded") {
-          navigate("/checkout/success");
+          console.log(orderResult);
+          navigate("/checkout/success", {state: orderResult});
           clearBasket();
        
         } else if (paymentResult?.error) {

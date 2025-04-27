@@ -12,6 +12,8 @@ import RegistrationSuccess from "../../features/account/RegistrationSuccess";
 import UserAuth from "./UserAuth";
 import Checkout from "../../features/checkout/Checkout";
 import CheckoutSuccess from "../../features/checkout/CheckoutSuccess";
+import OrdersPage from "../../features/orders/OrdersPage";
+import OrderDetails from "../../features/orders/OrderDetails";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +22,9 @@ export const router = createBrowserRouter([
     children: [
       {element: <UserAuth/>, children: [
         {path: "checkout", element: <Checkout/>},
-        {path: "checkout/success", element: <CheckoutSuccess/>}
+        {path: "checkout/success", element: <CheckoutSuccess/>},
+        {path: "orders", element: <OrdersPage/>},
+        {path: "orders/:id", element: <OrderDetails/>}
       ]},
       { path: "", element: <Home /> },
       { path: "catalogue", element: <Catalogue /> },

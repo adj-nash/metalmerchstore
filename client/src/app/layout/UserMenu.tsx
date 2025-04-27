@@ -4,6 +4,7 @@ import { User } from "../models/user";
 import { Logout, Person } from "@mui/icons-material";
 import HistoryIcon from '@mui/icons-material/History';
 import { useLogoutMutation } from "../../features/account/accountAPI";
+import { Link } from "react-router-dom";
 
 type Props = {
   user: User;
@@ -47,7 +48,7 @@ export default function UserMenu({user}: Props) {
               Profile
             </ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem component={Link} to="/orders">
             <ListItemIcon>
               <HistoryIcon/>
             </ListItemIcon>
