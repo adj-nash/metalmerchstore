@@ -69,7 +69,7 @@ export default function OrderDetails() {
                                         {item.quantity}
                                     </TableCell>    
                                     <TableCell>
-                                        {currencyFormat(item.price)}
+                                        {currencyFormat(item.price * item.quantity) }
                                         </TableCell>
                                 </TableRow>
                             ))}
