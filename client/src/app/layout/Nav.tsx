@@ -50,7 +50,7 @@ export default function Nav() {
     basket?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   return (
-    <AppBar position="fixed" sx={{ mb: 4 }}>
+    <AppBar position="fixed" sx={{ mb: 4, py: 1}}>
       <Toolbar
         sx={{
           display: "flex",

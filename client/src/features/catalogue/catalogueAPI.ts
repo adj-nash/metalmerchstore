@@ -30,11 +30,21 @@ export const catalogueApi = createApi({
       { category: string[]; band: string[]; genre: string[] },
       void
     >({ query: () => "products/filters" }),
+
+    fetchNew: builder.query<Product[], void>({
+      query: () => `Products/New`,
+    }),
+    fetchBest: builder.query<Product[], void>({
+      query: () => `Products/Best`,
+    }),
   }),
+
 });
 
 export const {
   useFetchAllProductsQuery,
   useFetchProductQuery,
   useFetchFilterQuery,
+  useFetchNewQuery,
+  useFetchBestQuery
 } = catalogueApi;

@@ -5,10 +5,8 @@ import { Box, Button, Checkbox, FormControlLabel, Step, StepLabel, Typography } 
 import { AddressElement, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Review from "./Review";
 import { useAddressQuery, useUpdateAddressMutation } from "../account/accountAPI";
-import { Address } from "../../app/models/user";
 import { ConfirmationToken, StripeAddressElementChangeEvent, StripePaymentElementChangeEvent } from "@stripe/stripe-js";
 import { toast } from "react-toastify";
-
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
 import { useClearBasketMutation, useFetchBasketQuery } from "../basket/basketApi";
@@ -17,7 +15,7 @@ import { useCreateOrderMutation } from "../orders/orderApi";
 
 export default function CheckoutStepper() {
     const [activeStep, setActiveStep] = useState(0);
-    const {data: {name, ...address} = {} as Address, isLoading} = useAddressQuery();
+    const {data, isLoading} = useAddressQuery();
     const [updateAddress] = useUpdateAddressMutation();
     const [checked, setChecked] = useState(false);
     const elements = useElements();
@@ -32,6 +30,12 @@ export default function CheckoutStepper() {
     const [createOrder] = useCreateOrderMutation();
    
     const steps = ["Address", "Payment", "Review"];
+
+    let name, address;
+
+    if(data) {
+      ({name, ...address} = data);
+    }
 
     const handleNext = async () => {
       if(activeStep === 0 && checked && elements)

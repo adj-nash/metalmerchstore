@@ -16,7 +16,7 @@ type Props = {
 export default function ProductCard({ product }: Props) {
   const [addBasketItem, { isLoading }] = useAddBasketItemMutation();
   return (
-    <Card>
+    <Card sx={{borderRadius: "10px"}}>
       <CardMedia
         sx={{ height: 250, backgroundSize: "cover" }}
         image={product.imageUrl}

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using API.Data;
 using API.Entities;
 using API.Extensions;
@@ -28,7 +29,29 @@ namespace API.Controllers
         Response.AddPaginationHeader(products.Metadata);
 
         return products;
-    }   
+    }       
+
+    [HttpGet("New")]
+    public async Task<ActionResult<List<Product>>> GetNewProducts()
+    {
+        var products = await context.Products
+        .OrderByDescending(product => product.Id)
+        .Take(6)
+        .ToListAsync();
+
+        return products;
+    } 
+
+    [HttpGet("Best")]
+        public async Task<ActionResult<List<Product>>> GetBestSellers()
+    {
+        var products = await context.Products
+        .OrderByDescending(product => product.Sold)
+        .Take(6)
+        .ToListAsync();
+
+        return products;
+    } 
     
     [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetProduct(int id)

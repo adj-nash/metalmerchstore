@@ -12,6 +12,7 @@ public class Product
     public char Size { get; set; }
     public required string Band { get; set; }
     public required string Genre{ get; set; }
+    public int Sold { get; set; } = 0;
 
 
 }

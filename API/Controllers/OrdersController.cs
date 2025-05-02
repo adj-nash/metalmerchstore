@@ -119,6 +119,7 @@ namespace API.Controllers
                 orderItems.Add(orderItem);
 
                 item.Product.Stock -= item.Quantity;
+                item.Product.Sold += item.Quantity;
             }
             return orderItems;
             

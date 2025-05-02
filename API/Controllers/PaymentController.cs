@@ -89,6 +89,7 @@ public class PaymentController(PaymentService paymentService, StoreContext conte
                ?? throw new Exception("Product not found"); 
 
                productItem.Stock += item.Quantity;
+               productItem.Sold -= item.Quantity;
             }
 
             order.OrderStatus = OrderStatus.PaymentFailed;
