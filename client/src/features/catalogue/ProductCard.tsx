@@ -25,17 +25,17 @@ export default function ProductCard({ product }: Props) {
         to={`/catalogue/${product.id}`}
       />
       <CardContent>
-        <Typography gutterBottom variant="subtitle1" color="secondary">
+        <Typography gutterBottom variant="subtitle1" color="secondary" fontSize="20px">
           {product.name}
         </Typography>
-        <Typography gutterBottom variant="subtitle1" color="secondary">
+        <Typography gutterBottom variant="subtitle1" color="secondary" fontSize="20px">
           £{(product.price / 100).toFixed(2)}
         </Typography>
         <Button
           onClick={() => addBasketItem({ product, quantity: 1 })}
           variant="contained"
           disabled={isLoading}
-        >
+           >
           Add to Cart
         </Button>
       </CardContent>

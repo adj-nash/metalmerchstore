@@ -15,11 +15,15 @@ function App() {
     palette: {
       mode: modeType,
     },
-  });
+    typography: {
+      fontFamily: ["Winsideuz", "sans-serif"].join(",")
+    }
+     });
+
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={darkTheme} >
         <Nav />
         <CssBaseline />
         <Container maxWidth="xl" sx={{ mt: 14 }}>

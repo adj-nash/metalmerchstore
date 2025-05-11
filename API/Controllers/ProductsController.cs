@@ -1,9 +1,13 @@
 using System.ComponentModel;
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using API.Extensions;
 using API.RequestHelpers;
+using API.Services;
+using AutoMapper;
 using MetalMerchStore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +16,7 @@ using Microsoft.OpenApi.Models;
 
 namespace API.Controllers
 {
-    public class ProductsController(StoreContext context) : BaseController
+    public class ProductsController(StoreContext context, IMapper mapper, ImageService imageService) : BaseController
     {
 
     [HttpGet]
@@ -52,6 +56,7 @@ namespace API.Controllers
 
         return products;
     } 
+
     
     [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetProduct(int id)
@@ -72,6 +77,73 @@ namespace API.Controllers
 
         return Ok(new { category, band, genre});
     }
+
+    [Authorize(Roles = "Admin")]
+    [HttpPost]
+    public async Task<ActionResult<Product>> CreateProduct(CreateProductDto createProductDto)
+    {
+        var product = mapper.Map<Product>(createProductDto);
+
+        if(createProductDto.File != null)
+        {
+            var imageResult = await imageService.AddImage(createProductDto.File);
+
+            if(imageResult.Error != null)
+            {
+                return BadRequest(imageResult.Error.Message);
+            }
+
+            product.ImageUrl = imageResult.SecureUrl.AbsoluteUri;
+            product.PublicId = imageResult.PublicId;
+        }
+
+        context.Products.Add(product);
+
+        var result = await context.SaveChangesAsync() > 0;
+
+        if(result) return CreatedAtAction(nameof(GetProduct), new {Id = product.Id}, product);
+
+        return BadRequest("Problem creating new product.");
+
+    }
+
+    [Authorize(Roles = "Admin")]
+    [HttpPut]
+    public async Task<ActionResult> UpdateProduct(UpdateProductDto updateProductDto)
+    {
+        var product = await context.Products.FindAsync(updateProductDto.Id);
+
+        if(product == null) return NotFound();
+
+        mapper.Map(updateProductDto, product);
+
+        var result = await context.SaveChangesAsync() > 0;
+
+        if(result) return NoContent();
+
+        return BadRequest("Problem updating product.");
+
+    }
+
+    [Authorize(Roles = "Admin")]        
+    [HttpDelete("{id}")]
+     public async Task<ActionResult> DeleteProduct(int id)
+     {
+        var product = await context.Products.FindAsync(id);
+
+        if(product == null) return NotFound();
+
+        context.Products.Remove(product);
+
+        var result = await context.SaveChangesAsync() > 0;
+
+        if(result) return Ok();
+
+        
+
+        return BadRequest("Problem deleting product.");
+     }
+
 
     }
 

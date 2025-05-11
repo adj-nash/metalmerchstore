@@ -63,8 +63,9 @@ export default function Nav() {
             component={NavLink}
             to={"/"}
             variant="h6"
-            sx={{ textDecoration: "none", "&.active": "none" }}
-          >
+            sx={{ textDecoration: "none", "&.active": "none", fontFamily: "Winsideuz", color: "red", fontSize: "40px"}}
+         
+                      >
             Metal Merch Store
           </Typography>
           <Switch checked={darkMode} onChange={() => dispatch(setDarkMode())} />
