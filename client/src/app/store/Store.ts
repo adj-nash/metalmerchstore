@@ -9,7 +9,7 @@ import { catalogueSlice } from "../../features/catalogue/catalogueSlice";
 import { accountApi } from "../../features/account/accountAPI";
 import { checkoutApi } from "../../features/checkout/checkoutApi";
 import { orderApi } from "../../features/orders/orderApi";
-import { adminApi } from "../../features/admin/AdminApi";
+import { adminApi } from "../../features/admin/adminApi";
 
 export const store = configureStore({
   reducer: {
