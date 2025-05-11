@@ -13,7 +13,7 @@ export default function Home() {
     <Box display="flex" alignItems="center" flexDirection="column" justifyContent="space-between">
         <Box>
           <img 
-          src="/images/HomePageBanner.jpg"
+          src="../../images/HomePageBanner.jpg"
           alt="Banner image."
           style={{
           position: "absolute",
@@ -25,7 +25,7 @@ export default function Home() {
           />
       </Box>
       <Box display="flex" alignItems="center" flexDirection="column" position="absolute">
-          <Typography textAlign="center" fontFamily="Trattatello">Metal Merch Store</Typography>
+          <Typography textAlign="center" fontFamily="Winsideuz" fontSize="40px" color="red">Welcome</Typography>
       </Box>
     </Box>
     

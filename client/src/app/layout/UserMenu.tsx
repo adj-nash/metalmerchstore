@@ -5,6 +5,7 @@ import { Logout, Person } from "@mui/icons-material";
 import HistoryIcon from '@mui/icons-material/History';
 import { useLogoutMutation } from "../../features/account/accountAPI";
 import { Link } from "react-router-dom";
+import Inventory from "@mui/icons-material/Inventory";
 
 type Props = {
   user: User;
@@ -56,6 +57,15 @@ export default function UserMenu({user}: Props) {
               Orders
             </ListItemText>
           </MenuItem>
+          {user.roles.includes("Admin") &&
+          <MenuItem component={Link} to="/inventory">
+            <ListItemIcon>
+              <Inventory/>
+            </ListItemIcon>
+            <ListItemText>
+              Inventory
+            </ListItemText>
+          </MenuItem> }
           <MenuItem onClick={logout}>
             <ListItemIcon>
               <Logout/>

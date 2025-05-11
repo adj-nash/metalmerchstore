@@ -15,8 +15,9 @@ export default function AppPagination({metadata, onPageChange}: Props) {
     const end = Math.min(currentPage * pageSize, totalCount);
 
   return (
-    <Box display="flex" justifyContent="space-evenly" alignItems="center" marginTop={3}>    
-        <Typography>Viewing items {start}-{end} of {totalCount}.</Typography>
+    <Box display="flex" flexDirection="column" alignItems="center" sx={{my: 1}}>    
+        <Typography >Viewing items {start}-{end} of {totalCount}.</Typography>
+        <br/>
         <Pagination count={totalPages} page={currentPage} onChange={(_, page) => onPageChange(page)}/>
     </Box>
 

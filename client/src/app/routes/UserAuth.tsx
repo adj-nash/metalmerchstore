@@ -13,6 +13,13 @@ export default function UserAuth() {
         return <Navigate to="/login" state={{from: location}}/>
     }
 
+    const adminRoutes = [
+      "/inventory"
+  ];
+
+  if(adminRoutes.includes(location.pathname) && !user.roles.includes("Admin")) {
+    return <Navigate to="/" replace/>
+  }
 
   return (
     <Outlet/>
