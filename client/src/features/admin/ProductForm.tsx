@@ -6,7 +6,7 @@ import TextInput from "../../shared/components/TextInput"
 import DropZone from "../../shared/components/DropZone"
 import { Product } from "../../app/models/product"
 import { useEffect } from "react"
-import { useCreateProductMutation, useUpdateProductMutation } from "./AdminApi"
+import { useCreateProductMutation, useUpdateProductMutation } from "./adminApi"
 import { handleApiError } from "../../lib/util"
 
 type Props = {

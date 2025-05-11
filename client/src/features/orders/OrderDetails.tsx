@@ -62,7 +62,7 @@ export default function OrderDetails() {
                                     <TableCell>
                                         <Box display="flex" alignItems="center" gap={3}>
                                         <img src={item.pictureUrl} alt={item.name} style={{width: 150, height: 150}}></img>
-                                        <Typography>{item.name}</Typography>
+                                        <Typography>{item.name}..</Typography>
                                         </Box>
                                     </TableCell>
                                     <TableCell>

@@ -9,7 +9,7 @@ import { setPageNumber } from "../catalogue/catalogueSlice";
 import ProductForm from "./ProductForm";
 import { useState } from "react";
 import { Product } from "../../app/models/product";
-import { useDeleteProductMutation } from "./AdminApi";
+import { useDeleteProductMutation } from "./adminApi";
 
 export default function Inventory() {
     const productParams = useAppSelector(state => state.catalogue);
