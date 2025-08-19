@@ -18,17 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install deps and build client app
-        run: |
-          cd client
-          npm install
-          npm run build
-
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
@@ -49,9 +38,6 @@ jobs:
   deploy:
     runs-on: windows-latest
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
       contents: read #This is required for actions/checkout
@@ -66,8 +52,8 @@ jobs:
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4DAD36F0B2ED4F7E8EC2BC2C6116327A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0ED955BB937B495BB8423261A7D5D576 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3F64B58AE5E7418D9B9057B69778BB3B }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_3F64B58AE5E7418D9B9057B69778BB3B }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0ED955BB937B495BB8423261A7D5D576 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
