@@ -2,7 +2,7 @@ using API.Data;
 using API.Middleware;
 using API.RequestHelpers;
 using API.Services;
-using MetalMerchStore;
+using API.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

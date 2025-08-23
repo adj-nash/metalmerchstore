@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace MetalMerchStore;
+namespace API.Entities;
 
 public class User : IdentityUser
 {
