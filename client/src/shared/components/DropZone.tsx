@@ -8,7 +8,7 @@ import { Upload } from "@mui/icons-material";
 type Props<T extends FieldValues> = {
     name: keyof T
 } & UseControllerProps<T>;
-
+    
 export default function DropZone<T extends FieldValues>(props: Props<T>) {
    
 const {fieldState, field} = useController({...props});

@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { counterSlice } from "./CounterReducer";
-import { catalogueApi } from "../../features/catalogue/catalogueAPI";
+import { merchandiseApi } from "../../features/merchandise/merchandiseAPI";
 import { uiSlice } from "../layout/uiSlice";
 import { errorApi } from "../../features/about/errorAPI";
 import { basketApi } from "../../features/basket/basketApi";
-import { catalogueSlice } from "../../features/catalogue/catalogueSlice";
+import { merchandiseSlice } from "../../features/merchandise/merchandiseSlice";
 import { accountApi } from "../../features/account/accountAPI";
 import { checkoutApi } from "../../features/checkout/checkoutApi";
 import { orderApi } from "../../features/orders/orderApi";
@@ -13,7 +13,7 @@ import { adminApi } from "../../features/admin/adminApi";
 
 export const store = configureStore({
   reducer: {
-    [catalogueApi.reducerPath]: catalogueApi.reducer,
+    [merchandiseApi.reducerPath]: merchandiseApi.reducer,
     [errorApi.reducerPath]: errorApi.reducer,
     [basketApi.reducerPath]: basketApi.reducer,
     [accountApi.reducerPath]: accountApi.reducer,
@@ -22,14 +22,14 @@ export const store = configureStore({
     [adminApi.reducerPath]: adminApi.reducer,
     counter: counterSlice.reducer,
     ui: uiSlice.reducer,
-    catalogue: catalogueSlice.reducer,
+    merchandise: merchandiseSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       adminApi.middleware,
       checkoutApi.middleware,
       basketApi.middleware,
-      catalogueApi.middleware,
+      merchandiseApi.middleware,
       errorApi.middleware,
       accountApi.middleware,
       orderApi.middleware,

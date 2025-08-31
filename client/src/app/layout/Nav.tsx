@@ -23,7 +23,7 @@ const leftLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
-  { name: "Catalogue", path: "/catalogue" },
+  { name: "Merchandise", path: "/merchandise" },
 ];
 
 const rightLinks = [
@@ -63,7 +63,7 @@ export default function Nav() {
             component={NavLink}
             to={"/"}
             variant="h6"
-            sx={{ textDecoration: "none", "&.active": "none", fontFamily: "Winsideuz", color: "red", fontSize: "40px"}}
+            sx={{ textDecoration: "none", "&.active": "none", color: "red", fontSize: "40px"}}
          
                       >
             Metal Merch Store

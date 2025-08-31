@@ -11,14 +11,23 @@ import { useAppSelector } from "../store/Store";
 function App() {
   const { darkMode } = useAppSelector((state) => state.ui);
   const modeType = darkMode ? "dark" : "light";
+  const font1 = {fontFamily: ["Winsideuz", "sans-serif"].join(",")};
+  const font2 = {fontFamily: ["Ropa Sans", "sans-serif"].join(",")};
+
   const darkTheme = createTheme({
     palette: {
       mode: modeType,
     },
     typography: {
-      fontFamily: ["Winsideuz", "sans-serif"].join(",")
-    }
-     });
+      h1: font1,
+      h2: font1,
+      h3: font1,
+      h4: font1,
+      h5: font1,
+      h6: font1,
+      subtitle1: font2
+     }
+    });
 
 
   return (

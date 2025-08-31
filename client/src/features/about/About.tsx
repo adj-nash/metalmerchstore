@@ -1,3 +1,29 @@
+import { Paper, Typography } from "@mui/material";
+
 export default function About() {
-  return <div>About</div>;
+
+  const body = "Welcome to Metal Merch Store! This e-commerce store is my personal portfolio project which I have built to demonstrate " +
+                "my coding abilities. It’s a full stack application that’s been built using React-Typescript for frontend and C# for the backend " +
+                "while being hosted on Azure, all of the code has been written from scratch without the use of AI.\n\nI have built up my coding skills " +
+                "over the past few years having used various online tutorials and resources on the web to aid me along the way, these include " +
+                "Codecademy, Udemy, Youtube, Google.\n\n Music is my main passion in life, in particular metal & punk music, therefore I " +
+                "wanted to bring this passion to the project to add my own personal touch. I have photographed and listed over 50+ items " +
+                "from my own personal collection of over 300+ band merch items which I have collected over the years. I’ve been inspired by " +
+                "similar sites such as Impericon, EMP, Damaged Society etc.\n\n Feel free to browse each page, try out the various filters on the" + 
+                "merchandise page and even sign up! Of course this website is a work in progress and I’m currently working on new features which I " +
+                "intend to implement over the coming weeks.\n\n";
+
+  return (
+
+    
+
+        <Paper sx={{mb: 3}}>
+          <Typography sx={{p:3}} variant="h4">About</Typography>
+          <Typography sx={{px:3}} variant="subtitle1" fontSize={23} align="justify" style={{whiteSpace: 'pre-line'}} >
+            {body}
+          </Typography>
+        </Paper>
+
+  )
+
 }
