@@ -13,7 +13,7 @@ namespace API.DTOs
     [Required]
     public required string Description { get; set; } = string.Empty;
     [Required]
-    [Range(10, double.PositiveInfinity)]
+    [Range(100, double.PositiveInfinity)]
     public long Price { get; set; }
     [Required]
     public IFormFile File { get; set; } = null!;

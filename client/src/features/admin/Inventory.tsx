@@ -1,18 +1,18 @@
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../app/store/Store"
-import { useFetchAllProductsQuery} from "../merchandise/merchandiseAPI";
+import { useFetchAllProductsQuery} from "../catalogue/catalogueAPI";
 import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import currencyFormat from "../../lib/util";
 import { Edit, Delete } from "@mui/icons-material";
 import AppPagination from "../../shared/components/AppPagination";
-import { setPageNumber } from "../merchandise/merchandiseSlice";
+import { setPageNumber } from "../catalogue/catalogueSlice";
 import ProductForm from "./ProductForm";
 import { useState } from "react";
 import { Product } from "../../app/models/product";
 import { useDeleteProductMutation } from "./adminApi";
 
 export default function Inventory() {
-    const productParams = useAppSelector(state => state.merchandise);
+    const productParams = useAppSelector(state => state.catalogue);
     const {data, refetch} = useFetchAllProductsQuery(productParams);
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);

@@ -50,7 +50,6 @@ namespace API.Controllers
         public async Task<ActionResult<List<Product>>> GetBestSellers()
     {
         var products = await context.Products
-        .Where(product => product.Stock > 0)
         .OrderByDescending(product => product.Sold)
         .Take(6)
         .ToListAsync();
