@@ -32,7 +32,7 @@ export default function ContactForm({handleForm} : Props) {
 
     
     emailjs.send("metalmerchstore", "template_5pehhjc",templateParams).then((response) => {
-        console.log("Success!", response.status, response.text);
+        console.log("Success", response.status, response.text);
       },
       (error) => {
         console.log("Failed!", error);
