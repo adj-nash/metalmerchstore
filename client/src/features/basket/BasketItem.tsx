@@ -18,7 +18,6 @@ export default function BasketItem({ item }: Props) {
     <Paper
       sx={{
         height: 140,
-        borderRadius: 3,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -33,16 +32,15 @@ export default function BasketItem({ item }: Props) {
           sx={{
             width: 100,
             height: 100,
-            objectFit: "cover",
-            borderRadius: 4,
+            objectFit: "cover", 
             mr: 8,
             ml: 4,
           }}
         />
         <Box display="flex" flexDirection="column" gap={1}>
-          <Typography variant="h6">{item.name}</Typography>
+          <Typography variant="subtitle1">{item.name}</Typography>
           <Box display="flex" alignItems="center" gap={3}>
-            <Typography sx={{ fontSize: "1.1rem" }}>
+            <Typography sx={{ fontSize: "1rem", color: "#BDBDBD" }}>
               {currencyFormat(item.price)}
             </Typography>
           </Box>
@@ -56,7 +54,7 @@ export default function BasketItem({ item }: Props) {
             >
               <Remove />
             </IconButton>
-            <Typography>{item.quantity}</Typography>
+            <Typography sx={{color: "#BDBDBD"}}>{item.quantity}</Typography>
             <IconButton
               onClick={() => addBasketItem({ product: item, quantity: 1 })}
               color="success"

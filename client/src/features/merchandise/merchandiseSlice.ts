@@ -7,11 +7,11 @@ const initialState: ProductParams = {
   category: [],
   genre: [],
   pageNumber: 1,
-  pageSize: 4,
+  pageSize: 8,
 };
 
-export const catalogueSlice = createSlice({
-  name: "catalogue",
+export const merchandiseSlice = createSlice({
+  name: "merchandise",
   initialState,
   reducers: {
     setOrderBy: (state, action) => {
@@ -50,4 +50,4 @@ export const {
   setPageNumber,
   setPageSize,
   resetParams,
-} = catalogueSlice.actions;
+} = merchandiseSlice.actions;

@@ -32,6 +32,7 @@ export default function CheckBoxes({items, checked, onChange}: Props) {
           control={<Checkbox checked={checkedItems.includes(item)} onClick={() => handleToggle(item)} sx={{ py: 0.7, fontSize: 40 }} />}
           label={item}
           key={item}
+          sx={{color: "#BDBDBD"}}
         />
       ))}
   </FormGroup>

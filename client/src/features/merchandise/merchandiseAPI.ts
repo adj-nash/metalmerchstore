@@ -5,8 +5,8 @@ import { ProductParams } from "../../app/models/productParams";
 import { filterEmptyValues } from "../../lib/util";
 import { Pagination } from "../../app/models/pagination";
 
-export const catalogueApi = createApi({
-  reducerPath: "catalogueApi",
+export const merchandiseApi = createApi({
+  reducerPath: "merchandiseApi",
   baseQuery: baseQueryWithErrorHandling,
   endpoints: (builder) => ({
     fetchAllProducts: builder.query<{items: Product[], pagination: Pagination}, ProductParams>({
@@ -37,6 +37,9 @@ export const catalogueApi = createApi({
     fetchBest: builder.query<Product[], void>({
       query: () => `Products/Best`,
     }),
+    fetchSoon: builder.query<Product[], void>({
+      query: () => `Products/Soon`,
+    }),
   }),
 
 });
@@ -46,5 +49,6 @@ export const {
   useFetchProductQuery,
   useFetchFilterQuery,
   useFetchNewQuery,
-  useFetchBestQuery
-} = catalogueApi;
+  useFetchBestQuery,
+  useFetchSoonQuery
+} = merchandiseApi;

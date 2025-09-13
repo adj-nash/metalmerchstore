@@ -26,33 +26,33 @@ export default function OrderSummary() {
       maxWidth="lg"
       mx="auto"
     >
-      <Paper sx={{ mb: 2, p: 3, width: "100%", borderRadius: 3 }}>
-        <Typography variant="h6" component="p" fontWeight="bold">
-          Order summary
+      <Paper sx={{ mb: 2, p: 3, width: "100%" }}>
+        <Typography variant="subtitle1" fontSize={23} component="p" fontWeight="bold">
+          Order Summary
         </Typography>
         <Typography variant="body2" sx={{ fontStyle: "italic" }}>
           Orders over £100 qualify for free delivery!
         </Typography>
         <Box mt={2}>
           <Box display="flex" justifyContent="space-between" mb={1}>
-            <Typography color="textSecondary">Subtotal</Typography>
-            <Typography>{currencyFormat(subtotal)}</Typography>
+            <Typography variant="subtitle1">Subtotal</Typography>
+            <Typography variant="subtitle1">{currencyFormat(subtotal)}</Typography>
           </Box>
           <Box display="flex" justifyContent="space-between" mb={1}>
-            <Typography color="textSecondary">Discount</Typography>
+            <Typography variant="subtitle1">Discount</Typography>
             <Typography color="success">
               {/* TODO */}
               -$0.00
             </Typography>
           </Box>
           <Box display="flex" justifyContent="space-between" mb={1}>
-            <Typography color="textSecondary">Delivery fee</Typography>
-            <Typography>{currencyFormat(deliveryFee)}</Typography>
+            <Typography variant="subtitle1">Postage</Typography>
+            <Typography variant="subtitle1">{currencyFormat(deliveryFee)}</Typography>
           </Box>
           <Divider sx={{ my: 2 }} />
           <Box display="flex" justifyContent="space-between" mb={1}>
-            <Typography color="textSecondary">Total</Typography>
-            <Typography>{currencyFormat(subtotal + deliveryFee)}</Typography>
+            <Typography variant="subtitle1">Total</Typography>
+            <Typography variant="subtitle1">{currencyFormat(subtotal + deliveryFee)}</Typography>
           </Box>  
         </Box>
 
@@ -62,12 +62,12 @@ export default function OrderSummary() {
             Checkout
           </Button>
 }
-          <Button fullWidth variant="contained" component={Link} to="/catalogue">Continue Shopping</Button>
+          <Button fullWidth variant="contained" component={Link} to="/merchandise">Continue Shopping</Button>
         </Box>
       </Paper>
 
       {/* Coupon Code Section */}
-      <Paper sx={{ width: "100%", borderRadius: 3, p: 3 }}>
+      <Paper sx={{ width: "100%", p: 3, pb:2 }}>
         <form>
           <Typography variant="subtitle1" component="label">
             Do you have a voucher code?

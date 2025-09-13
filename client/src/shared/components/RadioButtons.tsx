@@ -11,7 +11,7 @@ type Props = {
 export default function RadioButtons({options, selectedValue, onChange}: Props) {
   return (
     <FormControl>
-        <RadioGroup value={selectedValue} onChange={onChange}>
+        <RadioGroup value={selectedValue} onChange={onChange} sx={{color: "#BDBDBD"}}>
     {options.map(({ value, label }) => (
       <FormControlLabel
         key={label}

@@ -17,7 +17,7 @@ export default function OrderDetails() {
    
     <Card sx={{p: 2, maxWidth: "md", mx:"auto"}}>
         <Box display="flex" justifyContent="space-between" alignItems="center" >
-            <Typography>Order summary for order #{order.id} </Typography>
+            <Typography>Summary of order #{order.id} </Typography>
             <Button component={Link} to="/orders">Back to Orders</Button>
         </Box>
         <Divider/>

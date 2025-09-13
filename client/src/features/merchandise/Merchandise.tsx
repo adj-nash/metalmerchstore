@@ -1,13 +1,13 @@
 import {  Grid2} from "@mui/material";
 import ProductList from "./ProductList";
-import { useFetchAllProductsQuery, useFetchFilterQuery } from "./catalogueAPI";
+import { useFetchAllProductsQuery, useFetchFilterQuery } from "./merchandiseAPI";
 import Filters from "./Filters";
 import { useAppDispatch, useAppSelector } from "../../app/store/Store";
 import AppPagination from "../../shared/components/AppPagination";
-import { setPageNumber } from "./catalogueSlice";
+import { setPageNumber } from "./merchandiseSlice";
 
-export default function Catalogue() {
-  const productParams = useAppSelector((state) => state.catalogue);
+export default function Merchandise() {
+  const productParams = useAppSelector((state) => state.merchandise);
   const { data, isLoading } = useFetchAllProductsQuery(productParams);
   const { data: dataFilter, isLoading: isLoadingFilter } = useFetchFilterQuery();
   const dispatch = useAppDispatch();

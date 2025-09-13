@@ -4,6 +4,7 @@ import { Address, User } from "../../app/models/user";
 import { LoginSchema } from "../../lib/schemas/loginSchema";
 import { router } from "../../app/routes/Routes";
 import { RegisterSchema } from "../../lib/schemas/registerSchema";
+import { toast } from "react-toastify";
 
 
 export const accountApi = createApi({
@@ -36,10 +37,11 @@ export const accountApi = createApi({
                     body: credentials
                 }
             },
-            onQueryStarted: async (_, {queryFulfilled}) => {
+            async onQueryStarted(_, {queryFulfilled}) {
                 try {
                     await queryFulfilled;
-                    router.navigate("/regitrationsuccess");
+                    toast.success("Registration sucssessful! You can now login.")
+                    router.navigate("/login");
                 } catch (error) {
                     console.log(error);
                 }

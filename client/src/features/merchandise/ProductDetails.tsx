@@ -1,7 +1,7 @@
-import { Button, MenuItem, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useParams } from "react-router-dom";
-import { useFetchProductQuery } from "./catalogueAPI";
+import { useFetchProductQuery } from "./merchandiseAPI";
 import {
   useAddBasketItemMutation,
   useFetchBasketQuery,
@@ -38,7 +38,6 @@ export default function ProductDetails() {
       });
     }
   };
-
   
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = +e.currentTarget.value;
@@ -51,27 +50,9 @@ export default function ProductDetails() {
     { label: "Genre", value: product.genre },
   ];
 
-  const productSize = [
-    {
-      label: "Small",
-      value: "S",
-    },
-    {
-      label: "Medium",
-      value: "M",
-    },
-    {
-      label: "Large",
-      value: "L",
-    },
-    {
-      label: "Extra Large",
-      value: "XL",
-    },
-  ];
 
   return (
-    <Grid container spacing={3} sx={{ marginTop: "85px" }}>
+    <Grid container spacing={3} sx={{ m: "85px" }}>
       <Grid size={2}></Grid>
       <Grid size={5}>
         <img
@@ -81,26 +62,13 @@ export default function ProductDetails() {
         />
       </Grid>
       <Grid size={5}>
-        <Typography variant="h3">{product.name}</Typography>
+        <Typography variant="subtitle1" sx={{fontSize: "35px"}}>{product.name}</Typography>
 
-        <Typography variant="h4" sx={{ mb: 1 }}>
+        <Typography variant="subtitle1" sx={{ mb: 1, fontSize: "20px"}}>
           £{(product.price / 100).toFixed(2)}
         </Typography>
         <Typography variant="subtitle1">Inc. VAT plus shipping</Typography>
         <Grid size={4}>
-          <TextField
-            sx={{ marginTop: "20px", width: "210px" }}
-            variant="outlined"
-            select
-            label="Size"
-            defaultValue="S"
-          >
-            {productSize.map((option) => (
-              <MenuItem key={option.label} value={option.value}>
-                {option.value}
-              </MenuItem>
-            ))}
-          </TextField>
           <TextField
             sx={{ marginTop: "20px", width: "210px" }}
             variant="outlined"
@@ -124,7 +92,7 @@ export default function ProductDetails() {
         </Grid>
         <br />
         {productFields.map((item, index) => (
-          <Typography variant="subtitle1" key={index}>
+          <Typography sx={{p: "3px"}}variant="subtitle1" key={index}>
             <b>{item.label.toUpperCase()}</b> {item.value}
           </Typography>
         ))}
@@ -134,3 +102,4 @@ export default function ProductDetails() {
     </Grid>
   );
 }
+

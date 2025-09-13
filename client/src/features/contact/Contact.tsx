@@ -1,18 +1,35 @@
-import { Button, ButtonGroup } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../app/store/Store";
-import { decrement, increment } from "../../app/store/CounterReducer";
+import { Box,Paper, Typography } from "@mui/material";
+import ContactForm from "./ContactForm";
+import { useCallback, useState } from "react";
+import ContactFormSubmission from "./ContactFormSubmission";
+
+
 
 export default function Contact() {
-  const { data } = useAppSelector((state) => state.counter);
-  const dispatch = useAppDispatch();
+  
+  const [form, setForm] = useState(false);
+  
+  const handleForm = useCallback(() => {
+    setForm(!form)
+  }, [form]);
+
+  const body = "Please feel free to contact me with any questions or queries using the form below, this is linked directly to my personal " + 
+  "email address using EmailJS; so whether it's  work related, feedback about the site both good or bad, bugs etc, everything is appreciated!";
+
+ 
   return (
-    <>
-      <h1>Hello</h1>
-      <ButtonGroup variant="contained" aria-label="Basic button group">
-        <Button onClick={() => dispatch(increment(1))}>Increment</Button>
-        <h1>{data}</h1>
-        <Button onClick={() => dispatch(decrement(1))}>Decrement</Button>
-      </ButtonGroup>
-    </>
+    <Box component={Paper} sx={{p: 3}}>
+      <Typography variant="h4" color="red">
+        Contact
+      </Typography>
+      <Typography variant="subtitle1" fontSize={20} align="justify" style={{whiteSpace: 'pre-line'}} sx={{pt: 2}}>
+        {body}
+      </Typography>
+      { form ? <ContactFormSubmission/> : <ContactForm handleForm={handleForm} form={form} />}
+      
+
+      
+
+    </Box>
   );
 }

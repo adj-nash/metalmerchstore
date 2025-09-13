@@ -45,7 +45,7 @@ export default function RegisterForm() {
       };
     
       return (
-        <Container component={Paper} maxWidth="sm" sx={{borderRadius: 3}}>
+        <Container component={Paper} maxWidth="sm">
             <Box display="flex" flexDirection="column" alignItems="center" marginTop={8}>
                 <LockOutlined sx={{mt: 3, color: "secondary", fontSize: 40}}/>
                 <Typography variant="h5" marginY={1}>Register</Typography>
@@ -53,7 +53,7 @@ export default function RegisterForm() {
                 <TextField label="Email" autoFocus {...register("email")} error={!!errors.email} helperText={errors.email?.message} />
                 <TextField label="Password" type="password" {...register("password")} error={!!errors.password} helperText={errors.password?.message}/>
                 <Button disabled={isLoading || !isValid} variant="contained" type="submit">Sign Up</Button>
-                <Typography sx={{textAlign: "center"}}>Have an account already? <Typography component={Link} to="/login">Log in.</Typography></Typography>
+                <Typography variant="subtitle1" sx={{textAlign: "center"}}>Have an account already? <Typography component={Link} to="/login">Log in.</Typography></Typography>
                 </Box>
             </Box>
         </Container>

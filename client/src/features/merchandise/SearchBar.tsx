@@ -1,10 +1,10 @@
 import { debounce, TextField } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../app/store/Store";
-import { setSearchBy } from "./catalogueSlice";
+import { setSearchBy } from "./merchandiseSlice";
 import { useEffect, useState } from "react";
 
 export default function SearchBar() {
-  const { searchBy } = useAppSelector((state) => state.catalogue);
+  const { searchBy } = useAppSelector((state) => state.merchandise);
   const dispatch = useAppDispatch();
   const [term, setTerm] = useState(searchBy);
 

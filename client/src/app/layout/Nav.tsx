@@ -6,15 +6,13 @@ import {
   LinearProgress,
   List,
   ListItem,
-  Switch,
   Toolbar,
   Typography,
 } from "@mui/material";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/Store";
-import { setDarkMode } from "./uiSlice";
+import { useAppSelector } from "../store/Store";
 import { useFetchBasketQuery } from "../../features/basket/basketApi";
 import UserMenu from "./UserMenu";
 import { useUserInfoQuery } from "../../features/account/accountAPI";
@@ -23,7 +21,7 @@ const leftLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
-  { name: "Catalogue", path: "/catalogue" },
+  { name: "Merchandise", path: "/merchandise" },
 ];
 
 const rightLinks = [
@@ -42,8 +40,7 @@ const navStyles = {
 
 export default function Nav() {
   const { data: user} = useUserInfoQuery();
-  const { darkMode, isLoading } = useAppSelector((state) => state.ui);
-  const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector((state) => state.ui);
   const { data: basket } = useFetchBasketQuery();
 
   const itemCount =
@@ -63,16 +60,16 @@ export default function Nav() {
             component={NavLink}
             to={"/"}
             variant="h6"
-            sx={{ textDecoration: "none", "&.active": "none", fontFamily: "Winsideuz", color: "red", fontSize: "40px"}}
+            sx={{ textDecoration: "none", "&.active": "none", color: "red", fontSize: "40px"}}
          
                       >
             Metal Merch Store
           </Typography>
-          <Switch checked={darkMode} onChange={() => dispatch(setDarkMode())} />
+         
         </Box>
 
         <Box>
-          <List sx={{ display: "flex" }}>
+          <List  sx={{ display: "flex"}}>
             {leftLinks.map(({ name, path }) => (
               <ListItem component={NavLink} to={path} sx={navStyles}>
                 {name}

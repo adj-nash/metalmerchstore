@@ -16,19 +16,19 @@ type Props = {
 export default function ProductCard({ product }: Props) {
   const [addBasketItem, { isLoading }] = useAddBasketItemMutation();
   return (
-    <Card sx={{borderRadius: "10px"}}>
+    <Card>
       <CardMedia
         sx={{ height: 250, backgroundSize: "cover" }}
         image={product.imageUrl}
         title={product.name}
         component={Link}
-        to={`/catalogue/${product.id}`}
+        to={`/merchandise/${product.id}`}
       />
       <CardContent>
-        <Typography gutterBottom variant="subtitle1" color="secondary" fontSize="20px">
+        <Typography gutterBottom variant="subtitle1" color="secondary" fontSize="18px">
           {product.name}
         </Typography>
-        <Typography gutterBottom variant="subtitle1" color="secondary" fontSize="20px">
+        <Typography gutterBottom variant="subtitle1" color="secondary" fontSize="18px">
           £{(product.price / 100).toFixed(2)}
         </Typography>
         <Button

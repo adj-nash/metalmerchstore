@@ -39,6 +39,7 @@ namespace API.Controllers
     public async Task<ActionResult<List<Product>>> GetNewProducts()
     {
         var products = await context.Products
+        .Where(product => !product.Name.Contains("Soon"))
         .OrderByDescending(product => product.Id)
         .Take(6)
         .ToListAsync();
@@ -55,7 +56,18 @@ namespace API.Controllers
         .ToListAsync();
 
         return products;
-    } 
+    }
+
+    [HttpGet("Soon")]
+        public async Task<ActionResult<List<Product>>> GetComingSoon()
+        {
+            var products = await context.Products
+                .Where(product => product.Name.Contains("Soon"))
+                .Take(6)
+                .ToListAsync();
+            
+            return products;
+        }
 
     
     [HttpGet("{id}")]

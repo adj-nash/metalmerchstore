@@ -8,7 +8,7 @@ import {
 import SearchBar from "./SearchBar";
 import RadioButtons from "../../shared/components/RadioButtons";
 import { useAppDispatch, useAppSelector } from "../../app/store/Store";
-import { resetParams, setCategory, setGenre, setOrderBy } from "./catalogueSlice";
+import { resetParams, setCategory, setGenre, setOrderBy } from "./merchandiseSlice";
 import CheckBoxes from "../../shared/components/CheckBoxes";
 
 const sort = [
@@ -24,10 +24,12 @@ type Props = {
     band: string[];
     genre: string[];
   }
-}
+};
+
+
 export default function Filters({dataFilter: data}: Props) {
 
-  const {orderBy, category, genre} = useAppSelector(state => state.catalogue);
+  const {orderBy, category, genre} = useAppSelector(state => state.merchandise);
   const dispatch = useAppDispatch();
 
   return (
